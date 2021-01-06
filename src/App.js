@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import PokeNavbar from './components/layout/PokeNavbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome Trainers!</h1>
-    </div>
+    <Fragment>
+      <PokeNavbar/>
+    </Fragment>
   );
 }
 
