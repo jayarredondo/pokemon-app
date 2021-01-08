@@ -3,6 +3,8 @@ import './App.css';
 
 import PokeNavbar from './components/layout/PokeNavbar'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Fragment } from 'react';
@@ -13,10 +15,7 @@ function App() {
     <Fragment>
       <PokeNavbar/>
       <Container>
-        <Row>
-          <Col>
-            <PokeCard/>
-          </Col>
+        <Row className="mb-5">
           <Col>
             <PokeCard/>
           </Col>
@@ -28,9 +27,6 @@ function App() {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <PokeCard/>
-          </Col>
           <Col>
             <PokeCard/>
           </Col>
