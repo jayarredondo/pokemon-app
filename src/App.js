@@ -13,7 +13,34 @@ function App() {
     <Fragment>
       <PokeNavbar/>
       <Container>
-        <PokeCard/>
+        <Row>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+          <Col>
+            <PokeCard/>
+          </Col>
+        </Row>
       </Container>
     </Fragment>
   );
