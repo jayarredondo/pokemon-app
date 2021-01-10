@@ -16,7 +16,7 @@ const PokeDeck = ({pokemon, loading}) => {
         return (
             <div style={userStyle}>
                 {pokemon.map(monster => (
-                    <PokeCard key={monster} monster={monster}/>
+                    <PokeCard key={monster.name} monster={monster}/>
                 ))}
             </div>
         )
