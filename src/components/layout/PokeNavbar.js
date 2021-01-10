@@ -1,20 +1,16 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import FormControl from 'react-bootstrap/FormControl'
+import PokeSearch from '../pokemon/PokeSearch'
 
-function PokeNavbar() {
+const PokeNavbar = () => {
+
     return (
         <Navbar sticky="top" bg="primary" variant="dark" className="mb-5">
             <Navbar.Brand>
-                <img src="https://img.icons8.com/color/48/000000/instinct-pokemon.png"/>
+                <img src="https://img.icons8.com/color/48/000000/instinct-pokemon.png" alt="PokeIcon"/>
                 Cyber Pokedex
             </Navbar.Brand>
-            <Form inline>
-                <FormControl type="text" placeholder="Search Pokedex" className=" mr-sm-2" />
-                <Button type="submit" variant="outline-light">Search</Button>
-            </Form>
+            <PokeSearch />
         </Navbar>
     )
 }

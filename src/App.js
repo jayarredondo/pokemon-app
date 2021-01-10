@@ -1,44 +1,39 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import PokeNavbar from './components/layout/PokeNavbar'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PokeDeck from './components/pokemon/PokeDeck';
+import PokemonState from './components/context/pokedex/PokemonState'
+import axios from 'axios';
 
-import { Fragment } from 'react';
-import PokeCard from './components/pokemon/PokeCard';
+const App = () => {
 
-function App() {
+  const [pokemon, setPokemon] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  const getPokemon = async () => {
+    setLoading(true);
+
+    const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+    setPokemon(res.data.results);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getPokemon()
+  }, [])
+
+  console.log(pokemon)
+
   return (
-    <Fragment>
+    <PokemonState>
       <PokeNavbar/>
       <Container>
-        <Row className="mb-5">
-          <Col>
-            <PokeCard/>
-          </Col>
-          <Col>
-            <PokeCard/>
-          </Col>
-          <Col>
-            <PokeCard/>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <PokeCard/>
-          </Col>
-          <Col>
-            <PokeCard/>
-          </Col>
-          <Col>
-            <PokeCard/>
-          </Col>
-        </Row>
+        <PokeDeck loading={loading} pokemon={pokemon}/>
       </Container>
-    </Fragment>
+    </PokemonState>
   );
 }
 

@@ -1,0 +1,3 @@
+export const SEARCH_POKEMON = 'SEARCH_POKEMON'
+export const SET_LOADING = 'SEAT_LOADING'
+export const GET_POKEMON = 'GET_POKEMON'
