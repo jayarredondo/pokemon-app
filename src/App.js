@@ -16,7 +16,7 @@ const App = () => {
   const getPokemon = async () => {
     setLoading(true);
 
-    const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+    const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1118');
     setPokemon(res.data.results);
     setLoading(false);
   }

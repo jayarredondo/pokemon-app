@@ -3,6 +3,8 @@ import PokeCard from './PokeCard'
 import pokemonContext from '../context/pokedex/pokemonContext'
 import Spinner from '../layout/Spinner'
 import axios from 'axios'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const PokeDeck = ({pokemon, loading}) => {
 
@@ -14,11 +16,13 @@ const PokeDeck = ({pokemon, loading}) => {
         return <Spinner/>
     } else {
         return (
-            <div style={userStyle}>
+            <Row>
                 {pokemon.map(monster => (
-                    <PokeCard key={monster.name} monster={monster}/>
+                    <Col key={monster.name} sm={12} md={6} lg={4}>
+                        <PokeCard key={monster.name} monster={monster}/>
+                    </Col>
                 ))}
-            </div>
+            </Row>
         )
     }
 }
