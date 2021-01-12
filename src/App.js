@@ -16,7 +16,6 @@ const App = () => {
 
 
   useEffect(() => {
-    console.log(getPokemon)
     getPokemon()
   }, [])
 
