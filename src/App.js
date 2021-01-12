@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
 
 import PokeNavbar from './components/layout/PokeNavbar'
@@ -6,32 +6,23 @@ import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PokeDeck from './components/pokemon/PokeDeck';
 import PokemonState from './components/context/pokedex/PokemonState'
-import axios from 'axios';
+import pokemonContext from './components/context/pokedex/pokemonContext'
 
 const App = () => {
 
-  const [pokemon, setPokemon] = useState([])
-  const [loading, setLoading] = useState(false)
+  const PokemonContext = useContext(pokemonContext);
 
-  const getPokemon = async () => {
-    setLoading(true);
-
-    const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1118');
-    setPokemon(res.data.results);
-    setLoading(false);
-  }
+  const {getPokemon} = PokemonContext;
 
   useEffect(() => {
     getPokemon()
   }, [])
 
-  console.log(pokemon)
-
   return (
     <PokemonState>
       <PokeNavbar/>
       <Container>
-        <PokeDeck loading={loading} pokemon={pokemon}/>
+        <PokeDeck/>
       </Container>
     </PokemonState>
   );

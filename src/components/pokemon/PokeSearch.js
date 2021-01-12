@@ -8,7 +8,7 @@ const PokeSearch = () => {
     const PokemonContext = useContext(pokemonContext)
     const [text, setText] = useState('');
     
-    const {searchPokemon} = PokemonContext
+    const {searchPokemon} = PokemonContext;
 
     const onSubmit = e => {
         e.preventDefault();

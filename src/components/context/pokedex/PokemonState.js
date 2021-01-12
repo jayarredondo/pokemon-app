@@ -1,8 +1,9 @@
-import React, {useReducer, useEffect} from 'react'
+import React, {useReducer} from 'react'
 import axios from 'axios'
 import pokemonContext from './pokemonContext'
 import pokemonReducer from './pokemonReducer'
 import {
+    GET_POKEMON,
     SEARCH_POKEMON,
     SET_LOADING
 } from '../types'
@@ -17,14 +18,17 @@ const PokemonState = props => {
 
     // Get Pokemon
 
-    const getPokemon = async () => {    
-        const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
-        initialState.pokemon = res.data.results;
+    const getPokemon = async () => { 
+        setLoading();   
+        const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1118');
+        console.log(res.data.results)
+
+        dispatch({
+            type: GET_POKEMON,
+            payload: res.data.results
+        });
       }
     
-      useEffect(() => {
-        getPokemon()
-      }, [])
 
     // Search Pokemon
 
@@ -48,7 +52,8 @@ const PokemonState = props => {
         value={{
             pokemon: state.pokemon,
             loading: state.loading,
-            searchPokemon
+            searchPokemon,
+            getPokemon
         }}
         >
             {props.children}

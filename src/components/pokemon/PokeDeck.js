@@ -6,11 +6,13 @@ import axios from 'axios'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const PokeDeck = ({pokemon, loading}) => {
+const PokeDeck = () => {
 
-    // const PokemonContext = useContext(pokemonContext)
+    const PokemonContext = useContext(pokemonContext)
 
-    // const {loading, pokemon} = PokemonContext;
+    const {loading, pokemon} = PokemonContext;
+
+    console.log(PokemonContext.pokemon)
     
     if(loading) {
         return <Spinner/>
@@ -25,11 +27,6 @@ const PokeDeck = ({pokemon, loading}) => {
             </Row>
         )
     }
-}
-const userStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '1rem'
 }
 
 export default PokeDeck

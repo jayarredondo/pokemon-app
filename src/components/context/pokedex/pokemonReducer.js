@@ -7,10 +7,11 @@ import {
 export default (state, action) => {
     switch(action.type) {
         case GET_POKEMON:
+            console.log('payload', action.payload)
             return {
                 ...state,
                 pokemon: action.payload,
-                loading:false
+                loading: false
             }
         case SEARCH_POKEMON:
             return {
