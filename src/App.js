@@ -10,15 +10,6 @@ import pokemonContext from './components/context/pokedex/pokemonContext'
 
 const App = () => {
 
-  const PokemonContext = useContext(pokemonContext);
-
-  const {getPokemon} = PokemonContext;
-
-
-  useEffect(() => {
-    getPokemon()
-  }, [])
-
   return (
     <PokemonState>
       <PokeNavbar/>

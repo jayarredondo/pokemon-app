@@ -14,6 +14,7 @@ export default (state, action) => {
                 loading: false
             }
         case SEARCH_POKEMON:
+            console.log('payload', action.payload)
             return {
                 ...state,
                 pokemon: action.payload,

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect} from 'react'
 import PokeCard from './PokeCard'
 import pokemonContext from '../context/pokedex/pokemonContext'
 import Spinner from '../layout/Spinner'
@@ -10,7 +10,11 @@ const PokeDeck = () => {
 
     const PokemonContext = useContext(pokemonContext)
 
-    const {loading, pokemon} = PokemonContext;
+    const {loading, pokemon, getPokemon} = PokemonContext;
+
+    useEffect(() => {
+        getPokemon()
+      }, [])
 
     console.log(PokemonContext.pokemon)
     
