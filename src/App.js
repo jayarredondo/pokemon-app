@@ -14,7 +14,9 @@ const App = () => {
 
   const {getPokemon} = PokemonContext;
 
+
   useEffect(() => {
+    console.log(getPokemon)
     getPokemon()
   }, [])
 
