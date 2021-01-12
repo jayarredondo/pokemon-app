@@ -13,7 +13,7 @@ const PokeSearch = () => {
     const onSubmit = e => {
         e.preventDefault();
         searchPokemon(text);
-        setText({text: ''}); 
+        setText(''); 
         
     }
     const onChange = e => setText(e.target.value)  
