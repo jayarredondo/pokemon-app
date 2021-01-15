@@ -19,7 +19,7 @@ const PokeDeck = () => {
     
     if(loading) {
         return <Spinner/>
-    } else {
+    } else if(pokemon.length > 0){
         return (
             <Row>
                 {pokemon.map(monster => (
@@ -28,6 +28,10 @@ const PokeDeck = () => {
                     </Col>
                 ))}
             </Row>
+        )
+    } else {
+        return (
+        <h2 class="text-center">We're Sorry, we could not find any Pokemon by that name! Please try again.</h2>
         )
     }
 }

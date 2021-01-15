@@ -12,7 +12,7 @@ import {
 const PokemonState = props => {
     const initialState = {
         pokemon: [],
-        monster: null,
+        monster: {},
         loading: false
     }
 
@@ -48,11 +48,11 @@ const PokemonState = props => {
     const searchPokemon = async text => {
         setLoading();
 
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${text.toLowerCase()}`)
+        let filteredPokemon = state.pokemon.filter(monster => monster.name.toLowerCase().includes(text))
 
         dispatch({
             type: SEARCH_POKEMON,
-            payload: res.data
+            payload: filteredPokemon
         });
       }
 
