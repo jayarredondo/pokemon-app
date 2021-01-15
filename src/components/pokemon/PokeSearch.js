@@ -19,8 +19,7 @@ const PokeSearch = () => {
     const onChange = e => setText(e.target.value)  
 
     return (
-        <div>
-            <Form inline onSubmit={onSubmit}>
+            <Form inline onSubmit={onSubmit} className="justify-content-end">
                 <FormControl 
                     type="text" 
                     placeholder="Search Pokedex" 
@@ -30,7 +29,6 @@ const PokeSearch = () => {
                     onChange={onChange}/>
                 <Button type="submit" variant="outline-light">Search</Button>
             </Form>
-        </div>
     )
 }
 

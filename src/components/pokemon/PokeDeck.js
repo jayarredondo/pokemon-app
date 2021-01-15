@@ -14,9 +14,8 @@ const PokeDeck = () => {
 
     useEffect(() => {
         getPokemon()
+        // eslint-disable-next-line
       }, [])
-
-    console.log(PokemonContext.pokemon)
     
     if(loading) {
         return <Spinner/>
@@ -24,7 +23,7 @@ const PokeDeck = () => {
         return (
             <Row>
                 {pokemon.map(monster => (
-                    <Col key={monster.name} sm={12} md={6} lg={4}>
+                    <Col className="mb-3" key={monster.name} sm={12} md={6} lg={4}>
                         <PokeCard key={monster.name} monster={monster}/>
                     </Col>
                 ))}

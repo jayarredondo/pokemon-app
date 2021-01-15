@@ -1,19 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
-const PokeCard = ({monster}) => {
+const PokeCard = ({monster : {name, url}}) => {
 
     return (
-        <Card bg="warning" style={{ width: '18rem' }}>
-            <Card.Title className="m-auto">{monster.name}</Card.Title>
-            {/* <Card.Img variant="top" src={monster.sprites.front_default} className="px-2 "/> */}
-            {/* <Card.Body> */}
-                {/* <Card.Text> */}
-                    {/* Type: {monster.types[0].type.name} */}
-                {/* </Card.Text> */}
-                {/* <Button variant="primary">Go somewhere</Button> */}
-                {/* // </Card.Body> */}
-        </Card>
+        <Link to={`/pokemon/${name}`}>
+            <Card bg="warning" style={{ width: '18rem' }}>
+                <Card.Title className="m-auto">{name}</Card.Title>
+            </Card>
+        </Link>
     )
 }
 
