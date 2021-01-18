@@ -1,8 +1,7 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, Fragment} from 'react'
 import PokeCard from './PokeCard'
 import pokemonContext from '../context/pokedex/pokemonContext'
 import Spinner from '../layout/Spinner'
-import axios from 'axios'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -16,7 +15,7 @@ const PokeDeck = () => {
         getPokemon()
         // eslint-disable-next-line
       }, [])
-    
+
     if(loading) {
         return <Spinner/>
     } else if(pokemon.length > 0){
@@ -31,7 +30,9 @@ const PokeDeck = () => {
         )
     } else {
         return (
-        <h2 class="text-center">We're Sorry, we could not find any Pokemon by that name! Please try again.</h2>
+            <Fragment>
+                <h2 className="text-center">We're Sorry, we could not find any Pokemon by that name! Please try again.</h2>
+            </Fragment>
         )
     }
 }

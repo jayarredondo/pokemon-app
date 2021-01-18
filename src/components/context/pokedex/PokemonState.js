@@ -34,6 +34,7 @@ const PokemonState = props => {
     const getSinglePokemon = async (pokemonName) => {
         setLoading();
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        console.log('This is the data for a single pokemon request')
         console.log(res.data)
 
         dispatch({
@@ -63,6 +64,7 @@ const PokemonState = props => {
     <pokemonContext.Provider
         value={{
             pokemon: state.pokemon,
+            monster: state.monster,
             loading: state.loading,
             searchPokemon,
             getPokemon,
