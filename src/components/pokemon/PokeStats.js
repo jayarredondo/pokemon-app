@@ -5,27 +5,33 @@ import pokemonContext from '../context/pokedex/pokemonContext'
 
 const PokeStats = ({match}) => {
     const PokemonContext = useContext(pokemonContext)
-    const {monster, loading, getSinglePokemon} = PokemonContext;
+    const {monster, loading, getSinglePokemon, pokePics, getPokemonPics, getTypes, pokeTypes} = PokemonContext;
 
     useEffect(() => {
         console.log('useEffect is being executed!!')
         getSinglePokemon(match.params.name)
+        getPokemonPics(match.params.name)
+        getTypes(match.params.name)
         // eslint-disable-next-line
     }, [])
 
-
-    const { name, sprites, types} = monster;
+    console.log('Here are the types', pokeTypes)
 
     if (loading) {return <Spinner />}
 
         return (
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={sprites.front_default} />
+            <Card.Header>{monster.name}</Card.Header>
+            <Card.Img variant="top" src={pokePics.front_default} />
             <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>
-                    {types[0].type.name}
-                </Card.Text>
+                <Card.Title>Types:</Card.Title>
+                <ul>
+                    <Card.Text>
+                            {pokeTypes.map(type => (
+                            <li key={type.type.name}>{type.type.name}</li>
+                            ))}
+                    </Card.Text>
+                </ul>
             </Card.Body>
             </Card>
         )

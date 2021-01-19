@@ -2,7 +2,9 @@ import {
     SEARCH_POKEMON,
     SET_LOADING,
     GET_POKEMON,
-    GET_SINGLE_POKEMON
+    GET_SINGLE_POKEMON,
+    GET_POKEMON_PIC,
+    GET_TYPES
 } from '../types'
 
 export default (state, action) => {
@@ -14,10 +16,21 @@ export default (state, action) => {
                 loading: false
             }
         case GET_SINGLE_POKEMON:
-            console.log(action.payload)
             return {
                 ...state,
                 monster: action.payload,
+                loading: false
+            }
+        case GET_POKEMON_PIC:
+            return {
+                ...state,
+                pokePics: action.payload,
+                loading: false
+            }
+        case GET_TYPES:
+            return {
+                ...state,
+                pokeTypes: action.payload,
                 loading: false
             }
         case SEARCH_POKEMON:

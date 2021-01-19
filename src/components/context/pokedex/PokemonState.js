@@ -5,14 +5,18 @@ import pokemonReducer from './pokemonReducer'
 import {
     GET_POKEMON,
     GET_SINGLE_POKEMON,
+    GET_POKEMON_PIC,
     SEARCH_POKEMON,
-    SET_LOADING
+    SET_LOADING,
+    GET_TYPES
 } from '../types'
 
 const PokemonState = props => {
     const initialState = {
         pokemon: [],
         monster: {},
+        pokePics: [],
+        pokeTypes: [],
         loading: false
     }
 
@@ -34,12 +38,33 @@ const PokemonState = props => {
     const getSinglePokemon = async (pokemonName) => {
         setLoading();
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-        console.log('This is the data for a single pokemon request')
-        console.log(res.data)
 
         dispatch({
             type: GET_SINGLE_POKEMON,
             payload: res.data
+        })
+    }
+
+    // Get images for single Pokemon
+
+    const getPokemonPics = async (sprite) => {
+        setLoading();
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${sprite}`);
+
+        dispatch({
+            type: GET_POKEMON_PIC,
+            payload: res.data.sprites
+        })
+    }
+
+    // Get types of single Pokemon
+    const getTypes = async (pokeName) => {
+        setLoading();
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
+
+        dispatch({
+            type: GET_TYPES,
+            payload: res.data.types
         })
     }
     
@@ -66,9 +91,13 @@ const PokemonState = props => {
             pokemon: state.pokemon,
             monster: state.monster,
             loading: state.loading,
+            pokePics: state.pokePics,
+            pokeTypes: state.pokeTypes,
             searchPokemon,
             getPokemon,
-            getSinglePokemon
+            getSinglePokemon,
+            getPokemonPics,
+            getTypes
         }}
         >
             {props.children}
